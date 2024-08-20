@@ -1,28 +1,24 @@
 // merge sort logics
 
-
-//need to fix
-
 function mergeSort(array) {
-    if (array.length < 2) {
-        return array;
-    }
-    const mid = Math.floor(array.length / 2)
-    const leftArr = array.slice(0, mid)
-    const rightArr = array.slice(mid);
-    return merge(mergeSort(leftArr), mergeSort(rightArr))
-
-    function merge(leftArray, rightArray) {
-        const sortedArr = []
-        while (leftArray.length && rightArray.length) {
-            if (leftArray[0] <= rightArray[0]) {
-                sortedArr.push(leftArr.shift())
-            } else {
-                sortedArr.push(rightArr.shift())
-            }
-        }
-        return [...sortedArr, ...leftArr, ...rightArr]
-    }
+  if (array.length < 2) {
+    return array;
+  }
+  let mid = Math.floor(array.length / 2)
+  let leftArr = array.slice(0, mid);
+  let rightArr = array.slice(mid);
+  return merge(mergeSort(leftArr), mergeSort(rightArr))
 }
-
-console.log(mergeSort([55, 30, 8, 1, -5, 22, 17, 12]))
+function merge(leftArray, rightArray) {
+  let sortedArray = []
+  while (leftArray.length && rightArray.length) {
+    if (leftArray[0] <= rightArray[0]) {
+      sortedArray.push(leftArray.shift())
+    } else {
+      sortedArray.push(rightArray.shift())
+    }
+  }
+  return [...sortedArray, ...leftArray, ...rightArray]
+}
+console.log(mergeSort([22, 18, -1, 0, -6, 4, 20, 8]))
+console.log(mergeSort(["a", "n", "a", "g", "r", "a", "m"]))
