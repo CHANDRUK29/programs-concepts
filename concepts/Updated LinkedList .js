@@ -70,7 +70,7 @@ class LinkedList {
         // executing if just before one node before the index where we need to add new node (i,e.. if we need to add at postion 3 we will stop at node 2)
         if (init == postion - 1) {
           let after = ptr.next; // next node stored in temp variable
-          ptr.next = newNode; 
+          ptr.next = newNode;
           newNode.next = after;
           return;
         }
@@ -169,6 +169,21 @@ class LinkedList {
 
     }
   }
+
+  deleteDuplicates() {
+    let ptr = this.head;
+    while (ptr !== null) {
+      let ptr1 = ptr;
+      while (ptr1.next != null) {
+        if (ptr1.next.data === ptr.data) {
+          ptr1.next = ptr1.next.next;
+        } else {
+          ptr1 = ptr1.next
+        }
+      }
+      ptr = ptr.next;
+    }
+  }
 }
 
 let ll = new LinkedList();
@@ -177,19 +192,21 @@ let ll1 = new LinkedList()
 ll.addAtStart(20)
 ll.addAtStart(30)
 ll.addAtStart(40)
+ll.addAtStart(30)
 ll.addAtStart(60)
+ll.addAtStart(70)
 ll.addAtStart(70)
 ll.addAtStart(80)
 // ll.addAtPostion(100, 7)
-ll.removeAtPostion(3)
+// ll.removeAtPostion(3)
 
-ll1.addAtEnd(20)
-ll1.addAtEnd(30)
-ll1.addAtEnd(40)
+// ll1.addAtEnd(20)
+// ll1.addAtEnd(30)
+// ll1.addAtEnd(40)
 
 // ll.removeAtLast();
 // ll.removeAtStart();
-
+ll.deleteDuplicates()
 // console.log(ll.findValue(40))
 ll.print()
 
