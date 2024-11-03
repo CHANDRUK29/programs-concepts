@@ -1,95 +1,56 @@
-// Program To print the matrix in spiral structure
+//Dynamic approach
 
-let arr = [
-  [1, 2, 3, 4, 5],
-  [16, 17, 18, 19, 6],
-  [15, 24, 25, 20, 7],
-  [14, 23, 22, 21, 8],
-  [13, 12, 11, 10, 9]
-]
+/**
+ * @param {number[][]} matrix
+ * @return {number[]}
+ */
 
-let rows = arr.length;
-let col = arr[0].length;
-let top = 0
-let bottom = rows - 1
-let left = 0
-let right = col - 1
+var spiralOrder = function (matrix) {
+  if (matrix.length === 0) return [];
 
-console.log(rows, col)
+  let row = matrix.length;
+  let col = matrix[0].length;
+  let left = 0;
+  let right = col - 1;
+  let top = 0;
+  let bottom = row - 1;
+  let array = [];
 
-let array = []
-// right
-for (let i = left; i <= right; i++) {
-  array.push(arr[left][i])
+  while (left <= right && top <= bottom) {
+    // Traverse from left to right along the top row
+    for (let i = left; i <= right; i++) {
+      array.push(matrix[top][i]);
+    }
+    top++;
 
-}
-// to move top
-top++
-console.log(array)
+    // Traverse from top to bottom along the right column
+    for (let i = top; i <= bottom; i++) {
+      array.push(matrix[i][right]);
+    }
+    right--;
 
-//bottom
-for (let j = top; j <= bottom; j++) {
-  array.push(arr[j][right])
-}
-console.log(array)
+    // Traverse from right to left along the bottom row
+    if (top <= bottom) {
+      for (let i = right; i >= left; i--) {
+        array.push(matrix[bottom][i]);
+      }
+      bottom--;
+    }
 
-// to left one index
-right--;
+    // Traverse from bottom to top along the left column
+    if (left <= right) {
+      for (let i = bottom; i >= top; i--) {
+        array.push(matrix[i][left]);
+      }
+      left++;
+    }
+  }
 
-//  left
+  return array;
+};
 
-for (let k = right; k >= left; k--) {
-  array.push(arr[bottom][k])
-
-}
-
-console.log(array)
-
-bottom--;
-
-// up
-
-for (let l = bottom; l >= top; l--) {
-  array.push(arr[l][left])
-}
-
-console.log(array)
-left++;
-
-// right
-for (let m = left; m <= right; m++) {
-  array.push(arr[top][m])
-}
-
-console.log(array)
-
-top++;
-
-// bottom
-for (let n = top; n <= bottom; n++) {
-  array.push(arr[n][right])
-}
-
-console.log(array)
-
-right--;
-
-for (let o = right; o >= left; o--) {
-  array.push(arr[bottom][o])
-}
-
-console.log(array)
-bottom--;
-
-for (let p = bottom; p >= top; p--) {
-  array.push(arr[p][left])
-}
-
-console.log(array)
-left++;
-
-for (let q = left; q <= right; q++) {
-  array.push(arr[top][q]);
-}
-
-console.log(array)
+console.log(spiralOrder([[1, 2], [3, 4]]))
+console.log(spiralOrder([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
+console.log(spiralOrder([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]))
+console.log(spiralOrder([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]))
+console.log(spiralOrder([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]]))
