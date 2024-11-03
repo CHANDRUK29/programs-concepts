@@ -13,6 +13,32 @@ function revereseArr(arr) {
 }
 console.log(revereseArr(array))
 
+//  reverse string
+
+function revereseStr(str) {
+  let string = ''
+  for (let i = str.length - 1; i >= 0; i--) {
+    string += str[i]
+  }
+  return string
+}
+console.log(revereseStr("hello world"))
+
+
+//  Remove duplicates in an array
+function removeDuplicatesFromArray(array) {
+  // return [...new Set(array)];
+  let obj = {};
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    if (!obj[array[i]]) {
+      obj[array[i]] = 1;
+      result.push(array[i]);
+    }
+  }
+  return result;
+}
+console.log(removeDuplicatesFromArray([1, 3, 4, 4, 5, 5, 6]));
 
 
 // ---find duplicates of an array;
@@ -177,18 +203,6 @@ const merged = mergeSortedArrays(array1, array2);
 console.log(merged); // Output: [1, 2, 3, 4, 5, 6]
 
 
-// String Reversal
-
-function revereseStr(str) {
-  let string = ''
-  for (let i = str.length - 1; i >= 0; i--) {
-    string += str[i]
-  }
-  return string
-}
-console.log(revereseStr("hello world"))
-
-
 //Unique Characters in string
 
 function isStringUnique(str) {
@@ -220,3 +234,33 @@ function reverseNumber(num) {
 
 
 console.log(reverseNumber(895421258562))
+
+
+function maxNumInArray(arr) {
+  let max = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i]
+    }
+  }
+  return max;
+}
+
+console.log(maxNumInArray([1, 50, 7, 99, 22, 55, 8]))
+
+
+
+function isPalindrome(string) {
+  let left = 0
+  let right = string.length - 1;
+  while (left < right) {
+    if (string[left] != string[right]) {
+      return false
+    }
+    left++;
+    right--;
+  }
+  return true;
+}
+
+console.log(isPalindrome('madam'))
