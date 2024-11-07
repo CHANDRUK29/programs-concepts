@@ -19,3 +19,24 @@ function fibonacci(n) {
         return fibonacci(n - 1) + fibonacci(n - 2); // Recursive case
     }
 }
+
+
+// dynamic programming in fibonacci
+
+function fib(n, dp) {
+  if (n == 1) return 0
+  if (n == 2) return 1
+  let key = n.toString()
+  if (dp[key] != undefined) return dp[key]
+  let op = fib(n - 1, dp) + fib(n - 2, dp)
+  dp[key] = op
+  return op
+}
+
+console.log(fib(100, {}))
+
+
+
+
+
+
