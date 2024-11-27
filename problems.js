@@ -148,20 +148,24 @@ console.log(removeWhitespace('  JavaScript is awesome!  ')); // Output: 'JavaScr
 
 
 // longest substring
-function longestSubstring(s) {
+function longestSubString(str) {
   let maxLength = 0;
-  for (let i = 0; i < s.length; i++) {
-    let curSubStr = '';
-    for (let j = i; j < s.length; j++) {
-      const char = s[j];
-      if (curSubStr.includes(char)) {
+  let subString = '';
+  for (let i = 0; i < str.length; i++) {
+    let currSubString = '';
+    for (let j = i; j < str.length; j++) {
+      let char = str[j];
+      if (currSubString.includes(char)) {
         break;
       }
-      curSubStr += char;
-      maxLength = Math.max(maxLength, curSubStr.length);
+      currSubString += char;
+      maxLength = Math.max(maxLength, currSubString.length);
+      if (currSubString.length > subString.length) {
+        subString = currSubString;
+      }
     }
   }
-  return maxLength;
+  return { maxLength, subString };
 }
 
 console.log(longestSubstring("abcabcbb"));
