@@ -22,7 +22,7 @@ console.log('added', array)
 array.unshift(7)
 console.log('add ele at start', array)
 
-// remove first elemeny from an array
+// remove first element from an array
 array.shift()
 console.log("1st ele removed", array)
 
