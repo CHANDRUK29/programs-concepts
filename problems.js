@@ -168,10 +168,10 @@ function longestSubString(str) {
   return { maxLength, subString };
 }
 
-console.log(longestSubstring("abcabcbb"));
-console.log(longestSubstring("bbbbb"));
-console.log(longestSubstring("pwwkew"));
-console.log(longestSubstring(""));
+console.log(longestSubString("abcabcbb"));
+console.log(longestSubString("bbbbb"));
+console.log(longestSubString("pwwkew"));
+console.log(longestSubString(""));
 
 
 // Merge TwoArrays into single Sorted Array
@@ -269,3 +269,45 @@ function isPalindrome(string) {
 }
 
 console.log(isPalindrome('madam'))
+
+
+// deep copy
+function deepCopy(copy) {
+  if (copy === null || typeof copy !== 'object') {
+    return copy; // for primitive values return as it is;
+  }
+  // for Array
+  if (Array.isArray(copy)) {
+    return copy.map(item => deepCopy(item))
+  }
+  // for Date
+  if (copy instanceof Date) {
+    return new Date(copy)
+  }
+  // for map
+  if (copy instanceof Map) {
+    return new Map(Array.from(copy.entries(), ([key, value]) => [deepCopy(key), deepCopy(value)]));
+  }
+  // for set
+  if (copy instanceof Set) {
+    return new Set((Array.from(copy, value => deepCopy(value))))
+  }
+  // converting into deep copies
+  const copiedObj = {}
+  for (const key in copy) {
+    if (Object.prototype.hasOwnProperty.call(copy, key)) {
+      copiedObj[key] = deepCopy(copy[key]) // recursively converting into deep copies
+    }
+  }
+  return copiedObj
+}
+
+const original = {
+  age: 26,
+  date: new Date(),
+  map: new Map([['key', 'value']]),
+  set: new Set([1, 2, 3]),
+};
+
+const copy = deepCopy(original);
+console.log(copy);
