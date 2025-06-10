@@ -256,6 +256,7 @@ console.log(maxNumInArray([1, 50, 7, 99, 22, 55, 8]))
 
 
 function isPalindrome(string) {
+  string = String(string) // to check numbers is also palindrome
   let left = 0
   let right = string.length - 1;
   while (left < right) {
