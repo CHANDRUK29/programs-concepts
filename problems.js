@@ -418,3 +418,27 @@ function findLargestFrom2DArray(arr) {
   return Math.max(...max);
 }
 console.log(findLargestFrom2DArray([[1, 2, 3, 4], [5, 6, 7, 9], [45, 76, 2, 1], [89, 90, 87, 9]]))
+
+// Converting one dimensional array into n dimensional array using splice
+function chunkArrayInGroup(arr, size) {
+  let grp = [];
+  while (arr.length > 0) {
+    grp.push(arr.splice(0, size))
+  }
+  return grp
+}
+
+console.log(chunkArrayInGroup(['a', 'b', 'c', 'd'], 2)) //[["a", "b"], ["c", "d"]]
+
+
+// function To find only truthy values
+function removeFalseValue(arr) {
+  var truthy = []
+  for (var item of arr) {
+    if (item) {
+      truthy.push(item)
+    }
+  }
+  return truthy
+}
+console.log(removeFalseValue(["priya", 0, "", false, null, undefined, "ate", NaN, 9])) //["priya","ate",9]
