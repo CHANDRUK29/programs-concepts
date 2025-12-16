@@ -390,3 +390,31 @@ var reverseWords = function (s) {
   return res + word;
 };
 console.log(reverseWords("priya bagde"))
+
+// convert first letter of each word to Captialize
+function uppercaseFirstLetter(letter) {
+  let words = letter.toLowerCase().split(' ');
+  console.log(words)
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i][0].toUpperCase() + words[i].slice(1)
+  }
+  return words.join(' ')
+}
+console.log(uppercaseFirstLetter('india is my country'))
+
+// find the largest number from an 2D array
+function findLargestFrom2DArray(arr) {
+  let max = [];
+  for (let i = 0; i < arr.length; i++) {
+    let tempMax = arr[i][0];
+    for (let j = 0; j < arr.length; j++) {
+      let curElem = arr[i][j];
+      if (curElem >= tempMax) {
+        tempMax = curElem
+      }
+    }
+    max.push(tempMax)
+  }
+  return Math.max(...max);
+}
+console.log(findLargestFrom2DArray([[1, 2, 3, 4], [5, 6, 7, 9], [45, 76, 2, 1], [89, 90, 87, 9]]))
