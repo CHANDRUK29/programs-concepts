@@ -442,3 +442,41 @@ function removeFalseValue(arr) {
   return truthy
 }
 console.log(removeFalseValue(["priya", 0, "", false, null, undefined, "ate", NaN, 9])) //["priya","ate",9]
+
+// to find maximum possible subsets of an array
+function subSets(arr) {
+  const result = [[]];
+
+  for (const num of arr) {
+    const size = result.length;
+    for (let i = 0; i < size; i++) {
+      result.push([...result[i], num])
+    }
+  }
+  return result;
+}
+
+
+console.log(subSets([1, 2, 3]))
+
+// finding maximum repeating characters in a string
+function maxRepeatingChars(str) {
+  let obj = {}
+  for (let i = 0; i < str.length; i++) {
+    if (!obj[str[i]]) {
+      obj[str[i]] = 1
+    } else {
+      obj[str[i]]++
+    }
+  }
+  let maxChar = ''
+  let maxVal = -Infinity;
+  for (const key in obj) {
+    if (obj[key] > maxVal) {
+      maxVal = obj[key]
+      maxChar = key
+    }
+  }
+  return { maxChar, maxVal }
+}
+console.log(maxRepeatingChars("aaaabbaaccccccccccccccccccde"))
