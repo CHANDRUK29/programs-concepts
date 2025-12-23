@@ -480,3 +480,19 @@ function maxRepeatingChars(str) {
   return { maxChar, maxVal }
 }
 console.log(maxRepeatingChars("aaaabbaaccccccccccccccccccde"))
+
+// fincing the missing numbers in an array
+function findMissingNosInArray(arr) {
+    let set = new Set(arr)
+    let min = Math.min(...arr)
+    let max = Math.max(...arr)
+    const missing = []
+    for (let i = min; i <= max; i++) {
+        if (!set.has(i)) {
+            missing.push(i)
+        }
+    }
+    return missing;
+}
+
+console.log(findMissingNosInArray([1, 2, 6]))
