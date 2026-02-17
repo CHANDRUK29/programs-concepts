@@ -1,4 +1,4 @@
-//String Programs
+//-----------String Programs----------
 
 // 1) Reverse a string
 function reverseStr(string) {
@@ -9,6 +9,7 @@ function reverseStr(string) {
     return str;
 }
 console.log(reverseStr("hello"))
+
 
 // 2) check palindrome or not
 function palindrome(string) {
@@ -24,6 +25,7 @@ function palindrome(string) {
 }
 console.log(palindrome('Level'))
 console.log(palindrome('Racecar'))
+
 
 // 3) Count occurrence of each character in a string
 function countOccurence(string) {
@@ -41,6 +43,7 @@ function countOccurence(string) {
 
 console.log(countOccurence('abcabbcdbaef'))
 
+
 // 4) Find the longest word in a string
 function findLargestWord(string) {
     let words = string.split(" ");
@@ -54,8 +57,8 @@ function findLargestWord(string) {
 }
 console.log(findLargestWord("Hi this is Chandru"))
 
-//5) Count vowels and consonants in a string
 
+//5) Count vowels and consonants in a string
 function vowelsAndConsonants(string) {
     let vowels = 0;
     let consonants = 0;
@@ -70,6 +73,7 @@ function vowelsAndConsonants(string) {
     return { vowels, consonants }
 }
 console.log(vowelsAndConsonants("iuiwibefibwwi"))
+
 
 // 6) Reverse words in a sentence
 function reverseWords(string) {
@@ -97,6 +101,7 @@ function stringToTitleCase(string) {
 }
 console.log(stringToTitleCase("hello world from javascript"))
 
+
 // 9) Remove duplicate characters from a string
 function removeDuplicateFromString(string) {
     let obj = {};
@@ -111,6 +116,7 @@ function removeDuplicateFromString(string) {
     return arr.join('')
 }
 console.log(removeDuplicateFromString("abcbbdceadc"))
+
 
 //10) String compression (example: aaabb → a3b2)
 function stringCompression(string) {
@@ -132,7 +138,84 @@ function stringCompression(string) {
 console.log(stringCompression("aaabb"))
 
 
-//Array programs
+/* 11) String Decompression
+Input : a4b2c1d3e5
+output: aaaabbcdddeeeee
+*/
+function stringDecompression(string) {
+      let result = ""
+  for (let i = 0; i < string.length; i += 2) {
+    let char = string[i]
+    let count = Number(string[i + 1])
+    result += char.repeat(count)
+  }
+  return result;
+}
+console.log(stringDecompression("a4b2c1d3e5"))
+
+
+//12) string contains unique char or not?
+function containsDupeChar(string) {
+  let spt = string.split('')
+  let obj = {}
+  for (let i = 0; i < spt.length; i++) {
+    if (!obj[spt[i]]) {
+      obj[spt[i]] = 1
+    } else if (obj[spt[i]]) {
+      return true
+    }
+  }
+  return false;
+}
+console.log(containsDupeChar("abcde"))
+
+
+// 13) Rearrange the words based on numbers embbed in string
+// input: "is1 Thi0s T3est 2a";
+// output: "This is a Test";
+
+function rearrangeWords(string) {
+  let words = string.split(" ");
+  let result = [];
+  for (let i = 0; i < words.length; i++) {
+    let word = words[i];
+    let outputWord = ""
+    let postion = ""
+    for (let j = 0; j < word.length; j++) {
+      let char = word[j];
+      if (char >= "0" && char <= "9") {
+        postion = char
+      } else {
+        outputWord += char
+      }
+      result[postion] = outputWord
+    }
+  }
+  return result.join(" ")
+}
+console.log(rearrangeWords("is1 Thi0s T3est 2a"))
+
+
+// 14) Duplicate Each Character in a string:
+// Input: I am Chandru
+// Output : II aamm CChhaannddrruu
+function duplicateEachChar(string) {
+  let splitStr = string.split("");
+  console.log(splitStr)
+  let str = "";
+  for (let i = 0; i < splitStr.length; i++) {
+    if (splitStr[i] == " ") {
+      str += splitStr[i];
+    } else {
+      str += splitStr[i] + splitStr[i]
+    }
+  }
+  return str;
+}
+console.log(duplicateEachChar("I am Chandru"))
+
+
+//-------------Array programs-------------
 // 1) Find Largest Number in an array;
 function findLargestNumber(array) {
     // return Math.max(...array)
@@ -145,6 +228,7 @@ function findLargestNumber(array) {
     return max;
 }
 console.log(findLargestNumber([1, 442, 23, 4, 5]))
+
 
 // 2) find smallest number in an array
 function findSmallestNumber(array) {
@@ -175,6 +259,7 @@ function secondLargestNumberInAnArray(array) {
 }
 console.log(secondLargestNumberInAnArray([11, 21, 31, 4, 5]))
 
+
 // 4) Remove duplicate elements from an array
 function removeDuplicateFromArray(array) {
     let obj = {};
@@ -188,6 +273,7 @@ function removeDuplicateFromArray(array) {
     return arr
 }
 console.log(removeDuplicateFromArray([1, 2, 6, 3, 1, 2, 6, 7]))
+
 
 // 5) Find duplicate elements in an array
 function findDuplicatesInArray(array) {
@@ -205,6 +291,7 @@ function findDuplicatesInArray(array) {
 }
 console.log(findDuplicatesInArray([1, 2, 6, 3, 1, 2, 6, 7]))
 
+
 // 6) Find the sum of all elements in an array
 function sumOfAllNos(array) {
     let sum = 0;
@@ -214,6 +301,7 @@ function sumOfAllNos(array) {
     return sum;
 }
 console.log(sumOfAllNos([1, 2, 3, 4, 5]))
+
 
 // 7) Reverse an array
 function reverseArray(array) {
@@ -240,6 +328,7 @@ function sortASC(array) {
     return array
 }
 console.log(sortASC([1, 15, 6, 2, 10, 7]))
+
 function sortDSC(array) {
     // return array.sort((a,b)=>a-b)
     for (let i = 0; i < array.length; i++) {
@@ -269,7 +358,8 @@ function mergeAndRemoveDupe(array1, array2) {
 }
 console.log(mergeAndRemoveDupe([1, 2, 6, 3], [1, 2, 6, 7]))
 
-// Find the missing number in an array
+
+//10) Find the missing number in an array
 function findMissingNoInArr(array, n) {
     const set = new Set(array);
     const missing = [];
@@ -282,7 +372,8 @@ function findMissingNoInArr(array, n) {
 }
 console.log(findMissingNoInArr([1, 2, 4, 6], 6))
 
-// Rotate an array left or right
+
+//11) Rotate an array left or right
 function rotateLeft(arr, index) {
     index = index % arr.length;
     return [...arr.slice(index), ...arr.slice(0, index)]
@@ -296,7 +387,23 @@ function rotateRight(arr, index) {
 console.log(rotateRight([1, 2, 3, 4, 5], 2));
 
 
-//Number Program
+// remove target elements from an array:
+function removeTarget(arr, target) {
+  // return arr.filter((val) => val !== target);
+  let idx = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] != target) {
+      arr[idx] = arr[i];
+      idx++;
+    }
+  }
+  arr.length = idx;
+  return arr;
+}
+console.log(removeTarget([1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 6, 10], 6))
+
+
+//--------------Number Program-------------------
 // 1) check whether the number is prime
 function isPrimeOrNot(number) {
     if (number <= 1) return false
